@@ -260,18 +260,6 @@ export default function App() {
                 {tasks.length}
               </span>
             </button>
-
-            <button
-              onClick={() => setActiveTab('docs')}
-              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all ${
-                activeTab === 'docs'
-                  ? 'bg-brand-50 text-brand-700 font-semibold'
-                  : 'text-slate-600 hover:bg-slate-100'
-              }`}
-            >
-              <FileCode className="w-4 h-4" />
-              Viva & Deployment
-            </button>
           </nav>
         </div>
 
@@ -281,8 +269,8 @@ export default function App() {
             ST
           </div>
           <div>
-            <p className="text-xs font-semibold text-slate-900">Full Stack Student</p>
-            <p className="text-[11px] text-slate-400">Practical Lab #10</p>
+            <p className="text-xs font-semibold text-slate-900">Student</p>
+            <p className="text-[11px] text-slate-400"></p>
           </div>
         </div>
       </aside>
@@ -294,9 +282,8 @@ export default function App() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl font-bold text-slate-900">
-              {activeTab === 'dashboard' && 'Welcome back, Student! 👋'}
+              {activeTab === 'dashboard' && 'Welcome back, Student!'}
               {activeTab === 'tasks' && 'Task Management Hub'}
-              {activeTab === 'docs' && 'Practical #10 Viva & Deployment Guide'}
             </h2>
             <p className="text-sm text-slate-500 mt-1">
               {activeTab === 'dashboard' && "Here is your task progress summary for today."}
@@ -588,88 +575,6 @@ export default function App() {
                 })}
               </div>
             )}
-          </div>
-        )}
-
-        {/* VIVA & DEPLOYMENT DOCS TAB */}
-        {activeTab === 'docs' && (
-          <div className="space-y-6 max-w-4xl">
-            
-            {/* Quick Summary Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-3 text-brand-600">
-                <Terminal className="w-6 h-6" />
-                <h3 className="text-lg font-bold text-slate-900">1. Project Setup Commands</h3>
-              </div>
-              <pre className="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs overflow-x-auto font-mono leading-relaxed">
-{`# 1. Create Vite React App
-npm create vite@latest student-task-planner -- --template react
-
-# 2. Enter directory & install packages
-cd student-task-planner
-npm install lucide-react canvas-confetti
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-
-# 3. Start local development server
-npm run dev`}
-              </pre>
-            </div>
-
-            {/* Folder Structure */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-3 text-brand-600">
-                <BookOpen className="w-6 h-6" />
-                <h3 className="text-lg font-bold text-slate-900">2. File Structure Overview</h3>
-              </div>
-              <pre className="bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs font-mono text-slate-700 leading-relaxed">
-{`student-task-planner/
-├── src/
-│   ├── App.jsx           # Main Application & State Management Logic
-│   ├── main.jsx          # Vite React Mounting Entry
-│   └── index.css         # Tailwind Directives & CSS Entry
-├── tailwind.config.js    # Theme Customization (Colors & Fonts)
-├── package.json          # Dependencies List
-└── vite.config.js       # Vite Bundler Settings`}
-              </pre>
-            </div>
-
-            {/* Vercel Deployment Instructions */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-3 text-brand-600">
-                <Globe className="w-6 h-6" />
-                <h3 className="text-lg font-bold text-slate-900">3. Deployment to Vercel (Step-by-Step)</h3>
-              </div>
-              <ol className="list-decimal list-inside text-xs text-slate-600 space-y-2 leading-relaxed">
-                <li>Initialize Git: <code className="bg-slate-100 px-1.5 py-0.5 rounded">git init</code></li>
-                <li>Commit Code: <code className="bg-slate-100 px-1.5 py-0.5 rounded">git add . && git commit -m "Initial commit"</code></li>
-                <li>Push to GitHub Repository.</li>
-                <li>Go to <strong>Vercel.com</strong> → Click <strong>Add New Project</strong>.</li>
-                <li>Import your GitHub repository.</li>
-                <li>Click <strong>Deploy</strong> (Vercel automatically detects Vite settings).</li>
-              </ol>
-            </div>
-
-            {/* Viva Defense Points */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-3 text-brand-600">
-                <ShieldCheck className="w-6 h-6" />
-                <h3 className="text-lg font-bold text-slate-900">4. Viva Questions & Answers</h3>
-              </div>
-              
-              <div className="space-y-3 text-xs">
-                <div className="p-3 bg-slate-50 rounded-xl">
-                  <p className="font-semibold text-slate-800">Q: How does data persistence work without a backend database?</p>
-                  <p className="text-slate-600 mt-1">A: We use the browser's native <code className="bg-slate-200 px-1 rounded">localStorage</code> API synchronized via React's <code className="bg-slate-200 px-1 rounded">useEffect</code> hook.</p>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl">
-                  <p className="font-semibold text-slate-800">Q: Why did we use Vite instead of Create-React-App?</p>
-                  <p className="text-slate-600 mt-1">A: Vite provides instant development server startup and faster Hot Module Replacement (HMR) using native ES Modules.</p>
-                </div>
-              </div>
-            </div>
-
           </div>
         )}
 
